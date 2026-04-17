@@ -117,6 +117,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
-STATIC_FILES_DIRS = [BASE_DIR / 'sistema' / 'staticfiles']
+STATIC_FILESDIRS = [BASE_DIR / 'sistema' / 'staticfiles']
 
 LOGIN_URL = '/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

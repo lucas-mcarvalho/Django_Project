@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Base{% endblock %}</title>
+</head>
+<body>
+
+    <nav>
+        <a href="http://localhost:8000/veiculo/">Início</a> |
+        <a href="#">Veículos</a> |
+        <a href="http://localhost:8000/veiculo/novo/">Cadastrar Veículo</a> |
+        <a href="#">Contato</a>
+        <a href="http://localhost:8000/veiculo/editar/">Listar Veículos</a>
+    </nav>
+
+    <hr>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

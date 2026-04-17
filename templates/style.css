@@ -1,13 +1,202 @@
-.bg-image-vertical {
-position: relative;
-overflow: hidden;
-background-repeat: no-repeat;
-background-position: right center;
-background-size: auto 100%;
+/* Variáveis de Cores (Tema Claro por padrão) */
+:root {
+    --bg-body: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --bg-nav: rgba(255, 255, 255, 0.85);
+    --bg-card: #ffffff;
+    --text-main: #1a202c;
+    --text-secondary: #718096;
+    --primary-color: #3182ce;
+    --primary-hover: #2b6cb0;
+    --badge-bg: #edf2f7;
+    --badge-text: #2c5282;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 12px 20px rgba(0, 0, 0, 0.1);
 }
 
-@media (min-width: 1025px) {
-.h-custom-2 {
-height: 100%;
+/* Variáveis de Cores (Tema Escuro) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-body: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        --bg-nav: rgba(26, 32, 44, 0.85);
+        --bg-card: #2d3748;
+        --text-main: #f7fafc;
+        --text-secondary: #cbd5e0;
+        --badge-bg: #4c51bf;
+        --badge-text: #e0e7ff;
+        --border-color: #4a5568;
+        --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 12px 20px rgba(0, 0, 0, 0.5);
+    }
 }
+
+/* Reset Básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg-body);
+    color: var(--text-main);
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    background: var(--bg-nav);
+    backdrop-filter: blur(10px); /* Efeito de vidro */
+    -webkit-backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--primary-color);
+}
+
+/* Container Principal */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.header h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.header p {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+/* Grid de Veículos */
+.veiculos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+/* Cards */
+.veiculo-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 5px solid var(--primary-color);
+}
+
+.veiculo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.veiculo-marca {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.veiculo-modelo {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.veiculo-ano {
+    display: inline-block;
+    background: var(--badge-bg);
+    color: var(--badge-text);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Badges */
+.veiculo-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.badge-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.badge-text {
+    color: var(--text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .header h1 {
+        font-size: 26px;
+    }
+
+    .veiculos-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
 }

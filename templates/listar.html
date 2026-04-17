@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Listagem de Veículos{% endblock %}
+
+{% block content %}
+
+<h1>Nossos Veículos</h1>
+
+<form method="GET" action="{% url 'listar-veiculos' %}">
+    <input type="text" name="pesquisa" placeholder="Buscar veículo">
+    <button type="submit">Buscar</button>
+</form>
+
+{% for veiculo in veiculos %}
+    <div>
+
+        {% if veiculo.foto %}
+            <img src="{{ veiculo.foto.url }}" width="200">
+        {% else %}
+            <p>Sem imagem</p>
+        {% endif %}
+
+        <p><strong>Marca:</strong> {{ veiculo.get_marca_display }}</p>
+        <p><strong>Modelo:</strong> {{ veiculo.modelo }}</p>
+        <p><strong>Ano:</strong> {{ veiculo.ano }}</p>
+        <p><strong>Combustível:</strong> {{ veiculo.get_combustivel_display }}</p>
+
+        <a href="{% url 'editar-veiculos' veiculo.pk %}" class="btn btn-primary">
+            Editar Veículo
+        </a>
+
+        <form method="post" action="{% url 'deletar-veiculos' veiculo.pk %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este veículo?')">
+                Deletar
+            </button>
+        </form>
+
+    </div>
+    <hr>
+{% empty %}
+    <p>Nenhum veículo cadastrado.</p>
+{% endfor %}
+
+{% endblock %}

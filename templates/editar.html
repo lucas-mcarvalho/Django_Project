@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Edição de veículos{% endblock %}
+
+{% block content %}
+
+
+<h2>Editar Veículo</h2>
+<form action="{% url 'editar-veiculos' veiculo.pk %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="col-6">
+            <label>Marca</label>
+            {{ form.marca }}
+        </div>
+
+        <div class="col-6">
+            <label>Modelo</label>
+            {{ form.modelo }}
+        </div>
+
+        <div class="col-6">
+            <label>Ano</label>
+            {{ form.ano }}
+        </div>
+
+        <div class="col-6">
+            <label>Cor</label>
+            {{ form.cor }}
+        </div>
+
+        <div class="col-6">
+            <label>Combustível</label>
+            {{ form.combustivel }}
+        </div>
+
+        <div class="col-6">
+            <label>Foto</label>
+            {{ form.foto }}
+        </div>
+    </div>
+
+    <br>
+
+    <button type="submit">Salvar</button>
+
+{% endblock %}
