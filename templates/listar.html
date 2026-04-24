@@ -19,7 +19,9 @@
         {% else %}
             <p>Sem imagem</p>
         {% endif %}
-
+  <a href="{% url 'listar-anuncios' %}">
+    <button type="button">Ver Anúncios</button>
+</a>
         <p><strong>Marca:</strong> {{ veiculo.get_marca_display }}</p>
         <p><strong>Modelo:</strong> {{ veiculo.modelo }}</p>
         <p><strong>Ano:</strong> {{ veiculo.ano }}</p>
@@ -35,6 +37,8 @@
                 Deletar
             </button>
         </form>
+
+  
 
     </div>
     <hr>

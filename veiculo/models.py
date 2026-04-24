@@ -10,3 +10,5 @@ class Veiculo(models.Model):
     foto = models.ImageField(blank=True,null=True,upload_to='veiculos/fotos')
 
 
+    def __str__(self):
+        return f'{self.get_marca_display()} {self.modelo} ({self.ano})'

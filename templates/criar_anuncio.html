@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Cadastro de novo anúncio{% endblock %}
+
+{% block content %}
+
+<h2>Cadastrar Anúncio</h2>
+
+<form action="{% url 'criar-anuncio' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="col-6">
+            <label>Título do Anúncio</label>
+            {{ form.titulo }}
+        </div>
+
+        <div class="col-6">
+            <label>Valor (R$)</label>
+            {{ form.valor }}
+        </div>
+
+        <div class="col-6">
+            <label>Veículo Associado</label>
+            {{ form.veiculo }}
+        </div>
+
+        <div class="col-12 mt-2">
+            <label>Descrição</label>
+            {{ form.descricao }}
+        </div>
+    </div>
+
+    <br>
+
+    <button type="submit" class="btn btn-primary">Salvar Anúncio</button>
+</form>
+
+{% endblock %}

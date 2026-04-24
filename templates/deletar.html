@@ -1,0 +1,15 @@
+{%extends "base.html" %}
+
+{% block content %}
+<form action="/veiculo/deletar/{{object.pk}}/" method="post">
+{% csrf_token %}
+
+    <h1>Deletar veiculo</h1>
+    <p>Tem certeza que deseja deletar o veiculo "{{ veiculo.nome }}"?</p>
+    <div>
+        class"alert alert-danger" role="alert"
+        <p>Tem  certeza que deseja deletar o veiculo "{{ veiculo.nome }}"?</p>
+    </div>
+     <input type="submit" value="Confirmar" class="aler alert-danger">
+    </form>
+{% endblock %}
